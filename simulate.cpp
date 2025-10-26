@@ -350,8 +350,6 @@ void read_power()
 
 int main(int argc, char **argv)
 {
-    // read_power("output_2014.csv");
     read_power();
-    // run_sim();
     return 0;
 }
