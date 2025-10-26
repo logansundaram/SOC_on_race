@@ -1,11 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <utility>
-#include <iomanip>
-#include <math.h>
-#include <cmath>
-#include <vector>
+#include "simulate.h"
 
 std::vector<std::pair<double, double>> power; // First column is delta t (s), second column is Power (Wh)
 
