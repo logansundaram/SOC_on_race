@@ -79,4 +79,41 @@
     std::cout << "Total Energy Dissipated: " << e_diss << std::endl;
     std::cout << "SoC is " << SOC << std::endl;
     std::cout << "Total Energy Delivered to Load:" << e_del << std::endl;
+}
+
+
+void read_power(std::string parameter_csv)
+{
+    std::ifstream parameter_file(parameter_csv);
+    if (!parameter_file.is_open())
+    {
+        throw std::runtime_error("Could not open file");
+    }
+
+    std::string line;
+    std::string first_val, second_val;
+
+    if (parameter_file.good())
+    {
+        while (std::getline(parameter_file, line))
+        {
+            std::stringstream ss(line);
+            std::getline(ss, first_val, ',');
+            std::getline(ss, second_val);
+
+            double first = atof(first_val.c_str());
+            double second = atof(second_val.c_str());
+
+            std::pair<double, double> csv_pair;
+            csv_pair = std::make_pair(first, second);
+
+            power.push_back(csv_pair);
+        }
+    }
+
+    parameter_file.close();
+    if (parameter_file.is_open())
+    {
+        throw std::runtime_error("File not closed properly");
+    }
 }*/

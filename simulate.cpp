@@ -240,41 +240,6 @@ double calc_P_diss(double V1, double V2, double IL, double R0, double R1, double
 
     return pow(V1, 2) / R1 + pow(V2, 2) / R2 + pow(IL, 2) * R0;
 }
-void read_power(std::string parameter_csv)
-{
-    std::ifstream parameter_file(parameter_csv);
-    if (!parameter_file.is_open())
-    {
-        throw std::runtime_error("Could not open file");
-    }
-
-    std::string line;
-    std::string first_val, second_val;
-
-    if (parameter_file.good())
-    {
-        while (std::getline(parameter_file, line))
-        {
-            std::stringstream ss(line);
-            std::getline(ss, first_val, ',');
-            std::getline(ss, second_val);
-
-            double first = atof(first_val.c_str());
-            double second = atof(second_val.c_str());
-
-            std::pair<double, double> csv_pair;
-            csv_pair = std::make_pair(first, second);
-
-            power.push_back(csv_pair);
-        }
-    }
-
-    parameter_file.close();
-    if (parameter_file.is_open())
-    {
-        throw std::runtime_error("File not closed properly");
-    }
-}
 
 void print_summary(double p_diss, double e_diss, double SOC, double e_del)
 {
